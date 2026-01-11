@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.example.oraclehbm.model.FactOrder" table="FACT_ORDER">
+
+        <id name="orderId" column="ORDER_ID" type="java.lang.Long">
+            <generator class="native">
+                <param name="sequence_name">FACT_ORDER_SEQ</param>
+            </generator>
+        </id>
+
+        <property name="customerId" column="CUSTOMER_ID" type="java.lang.Long" not-null="true" insert="false" update="false"/>
+        <property name="orderNumber" column="ORDER_NUMBER" type="java.lang.String" length="50" not-null="true"/>
+        <property name="orderDate" column="ORDER_DATE" type="java.time.LocalDate" not-null="true"/>
+        <property name="status" column="STATUS" type="java.lang.String" length="30"/>
+        <property name="totalAmount" column="TOTAL_AMOUNT" type="java.math.BigDecimal" precision="15" scale="2"/>
+        <property name="taxAmount" column="TAX_AMOUNT" type="java.math.BigDecimal" precision="15" scale="2"/>
+        <property name="discountAmount" column="DISCOUNT_AMOUNT" type="java.math.BigDecimal" precision="15" scale="2"/>
+        <property name="shippingAddress" column="SHIPPING_ADDRESS" type="java.lang.String" length="500"/>
+        <property name="shippedDate" column="SHIPPED_DATE" type="java.time.LocalDate"/>
+        <property name="deliveredDate" column="DELIVERED_DATE" type="java.time.LocalDate"/>
+
+        <!-- Many-to-One relationship to DimCustomer -->
+        <many-to-one name="customer"
+                     class="com.example.oraclehbm.model.DimCustomer"
+                     column="CUSTOMER_ID"
+                     lazy="false"
+                     fetch="join"/>
+
+        <!-- One-to-Many relationship to FactOrderLine -->
+        <bag name="orderLines"
+             inverse="true"
+             lazy="true"
+             cascade="all-delete-orphan">
+            <key column="ORDER_ID"/>
+            <one-to-many class="com.example.oraclehbm.model.FactOrderLine"/>
+        </bag>
+
+    </class>
+</hibernate-mapping>

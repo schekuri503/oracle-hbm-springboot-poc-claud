@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.example.oraclehbm.model.FactOrderLine" table="FACT_ORDER_LINE">
+
+        <id name="orderLineId" column="ORDER_LINE_ID" type="java.lang.Long">
+            <generator class="native">
+                <param name="sequence_name">FACT_ORDER_LINE_SEQ</param>
+            </generator>
+        </id>
+
+        <property name="orderId" column="ORDER_ID" type="java.lang.Long" not-null="true" insert="false" update="false"/>
+        <property name="productId" column="PRODUCT_ID" type="java.lang.Long" not-null="true" insert="false" update="false"/>
+        <property name="quantity" column="QUANTITY" type="java.lang.Integer" not-null="true"/>
+        <property name="unitPrice" column="UNIT_PRICE" type="java.math.BigDecimal" precision="15" scale="2"/>
+        <property name="lineTotal" column="LINE_TOTAL" type="java.math.BigDecimal" precision="15" scale="2"/>
+        <property name="discountPercent" column="DISCOUNT_PERCENT" type="java.math.BigDecimal" precision="5" scale="2"/>
+        <property name="lineNumber" column="LINE_NUMBER" type="java.lang.Integer"/>
+
+        <!-- Many-to-One relationship to FactOrder -->
+        <many-to-one name="order"
+                     class="com.example.oraclehbm.model.FactOrder"
+                     column="ORDER_ID"
+                     lazy="false"
+                     fetch="join"/>
+
+        <!-- Many-to-One relationship to DimProduct -->
+        <many-to-one name="product"
+                     class="com.example.oraclehbm.model.DimProduct"
+                     column="PRODUCT_ID"
+                     lazy="false"
+                     fetch="join"/>
+
+    </class>
+</hibernate-mapping>

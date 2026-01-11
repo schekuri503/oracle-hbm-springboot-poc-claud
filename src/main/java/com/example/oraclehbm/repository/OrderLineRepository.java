@@ -51,6 +51,14 @@ public class OrderLineRepository {
         return query.getResultList();
     }
 
+    public List<FactOrderLine> findByOrderIdWithLimit(Long orderId, int limit) {
+        Query<FactOrderLine> query = getCurrentSession()
+                .createQuery("FROM FactOrderLine WHERE order.orderId = :orderId ORDER BY lineNumber", FactOrderLine.class);
+        query.setParameter("orderId", orderId);
+        query.setMaxResults(limit);
+        return query.getResultList();
+    }
+
     public List<FactOrderLine> findByProductId(Long productId) {
         Query<FactOrderLine> query = getCurrentSession()
                 .createQuery("FROM FactOrderLine WHERE product.productId = :productId ORDER BY orderLineId", FactOrderLine.class);

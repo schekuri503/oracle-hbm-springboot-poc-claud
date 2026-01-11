@@ -22,11 +22,11 @@ public class OrderController {
     }
 
     /**
-     * Get top N orders (default 10)
+     * Get top N orders (default 50)
      */
     @GetMapping
     public ResponseEntity<List<FactOrder>> getTopOrders(
-            @RequestParam(defaultValue = "10") int limit) {
+            @RequestParam(defaultValue = "50") int limit) {
         List<FactOrder> orders = orderRepository.findTop(limit);
         return ResponseEntity.ok(orders);
     }

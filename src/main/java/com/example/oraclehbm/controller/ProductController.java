@@ -20,11 +20,11 @@ public class ProductController {
     }
 
     /**
-     * Get top N products (default 10)
+     * Get top N products (default 50)
      */
     @GetMapping
     public ResponseEntity<List<DimProduct>> getTopProducts(
-            @RequestParam(defaultValue = "10") int limit) {
+            @RequestParam(defaultValue = "50") int limit) {
         List<DimProduct> products = productRepository.findTop(limit);
         return ResponseEntity.ok(products);
     }

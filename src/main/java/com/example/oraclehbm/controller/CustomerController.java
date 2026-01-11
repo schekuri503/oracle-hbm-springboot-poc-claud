@@ -20,11 +20,11 @@ public class CustomerController {
     }
 
     /**
-     * Get top N customers (default 10)
+     * Get top N customers (default 50)
      */
     @GetMapping
     public ResponseEntity<List<DimCustomer>> getTopCustomers(
-            @RequestParam(defaultValue = "10") int limit) {
+            @RequestParam(defaultValue = "50") int limit) {
         List<DimCustomer> customers = customerRepository.findTop(limit);
         return ResponseEntity.ok(customers);
     }

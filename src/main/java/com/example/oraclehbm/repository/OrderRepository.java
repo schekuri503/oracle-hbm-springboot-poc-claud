@@ -32,13 +32,6 @@ public class OrderRepository {
         return Optional.ofNullable(order);
     }
 
-    public Optional<FactOrder> findByOrderNumber(String orderNumber) {
-        Query<FactOrder> query = getCurrentSession()
-                .createQuery("FROM FactOrder WHERE orderNumber = :orderNumber", FactOrder.class);
-        query.setParameter("orderNumber", orderNumber);
-        return query.uniqueResultOptional();
-    }
-
     public List<FactOrder> findAll() {
         Query<FactOrder> query = getCurrentSession()
                 .createQuery("FROM FactOrder ORDER BY orderId", FactOrder.class);
@@ -54,23 +47,38 @@ public class OrderRepository {
 
     public List<FactOrder> findByCustomerId(Long customerId) {
         Query<FactOrder> query = getCurrentSession()
-                .createQuery("FROM FactOrder WHERE customer.customerId = :customerId ORDER BY orderDate DESC", FactOrder.class);
+                .createQuery("FROM FactOrder WHERE customer.customerId = :customerId ORDER BY orderDt DESC", FactOrder.class);
         query.setParameter("customerId", customerId);
         return query.getResultList();
     }
 
     public List<FactOrder> findByStatus(String status) {
         Query<FactOrder> query = getCurrentSession()
-                .createQuery("FROM FactOrder WHERE status = :status ORDER BY orderDate DESC", FactOrder.class);
+                .createQuery("FROM FactOrder WHERE status = :status ORDER BY orderDt DESC", FactOrder.class);
         query.setParameter("status", status);
+        return query.getResultList();
+    }
+
+    public List<FactOrder> findByChannel(String channel) {
+        Query<FactOrder> query = getCurrentSession()
+                .createQuery("FROM FactOrder WHERE channel = :channel ORDER BY orderDt DESC", FactOrder.class);
+        query.setParameter("channel", channel);
         return query.getResultList();
     }
 
     public List<FactOrder> findByDateRange(LocalDate startDate, LocalDate endDate) {
         Query<FactOrder> query = getCurrentSession()
-                .createQuery("FROM FactOrder WHERE orderDate BETWEEN :startDate AND :endDate ORDER BY orderDate DESC", FactOrder.class);
+                .createQuery("FROM FactOrder WHERE orderDt BETWEEN :startDate AND :endDate ORDER BY orderDt DESC", FactOrder.class);
         query.setParameter("startDate", startDate);
         query.setParameter("endDate", endDate);
+        return query.getResultList();
+    }
+
+    public List<FactOrder> findByChannelAndStatus(String channel, String status) {
+        Query<FactOrder> query = getCurrentSession()
+                .createQuery("FROM FactOrder WHERE channel = :channel AND status = :status ORDER BY orderDt DESC", FactOrder.class);
+        query.setParameter("channel", channel);
+        query.setParameter("status", status);
         return query.getResultList();
     }
 

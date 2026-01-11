@@ -12,24 +12,18 @@ public class DimCustomer implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long customerId;
-    private String customerName;
-    private String email;
-    private String phone;
-    private String address;
-    private String city;
-    private String state;
-    private String country;
-    private String postalCode;
-    private LocalDate createdDate;
-    private Boolean activeFlag;
+    private String region;
+    private String segment;
+    private LocalDate createdDt;
 
     public DimCustomer() {
     }
 
-    public DimCustomer(Long customerId, String customerName, String email) {
+    public DimCustomer(Long customerId, String region, String segment, LocalDate createdDt) {
         this.customerId = customerId;
-        this.customerName = customerName;
-        this.email = email;
+        this.region = region;
+        this.segment = segment;
+        this.createdDt = createdDt;
     }
 
     // Getters and Setters
@@ -41,94 +35,37 @@ public class DimCustomer implements Serializable {
         this.customerId = customerId;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getRegion() {
+        return region;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
-    public String getEmail() {
-        return email;
+    public String getSegment() {
+        return segment;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setSegment(String segment) {
+        this.segment = segment;
     }
 
-    public String getPhone() {
-        return phone;
+    public LocalDate getCreatedDt() {
+        return createdDt;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public LocalDate getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public Boolean getActiveFlag() {
-        return activeFlag;
-    }
-
-    public void setActiveFlag(Boolean activeFlag) {
-        this.activeFlag = activeFlag;
+    public void setCreatedDt(LocalDate createdDt) {
+        this.createdDt = createdDt;
     }
 
     @Override
     public String toString() {
         return "DimCustomer{" +
                 "customerId=" + customerId +
-                ", customerName='" + customerName + '\'' +
-                ", email='" + email + '\'' +
-                ", city='" + city + '\'' +
-                ", country='" + country + '\'' +
+                ", region='" + region + '\'' +
+                ", segment='" + segment + '\'' +
+                ", createdDt=" + createdDt +
                 '}';
     }
 }

@@ -51,16 +51,6 @@ public class OrderController {
     }
 
     /**
-     * Get order by order number
-     */
-    @GetMapping("/number/{orderNumber}")
-    public ResponseEntity<FactOrder> getOrderByNumber(@PathVariable String orderNumber) {
-        return orderRepository.findByOrderNumber(orderNumber)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
-
-    /**
      * Get orders by customer ID
      */
     @GetMapping("/customer/{customerId}")
@@ -75,6 +65,26 @@ public class OrderController {
     @GetMapping("/status/{status}")
     public ResponseEntity<List<FactOrder>> getOrdersByStatus(@PathVariable String status) {
         List<FactOrder> orders = orderRepository.findByStatus(status);
+        return ResponseEntity.ok(orders);
+    }
+
+    /**
+     * Get orders by channel
+     */
+    @GetMapping("/channel/{channel}")
+    public ResponseEntity<List<FactOrder>> getOrdersByChannel(@PathVariable String channel) {
+        List<FactOrder> orders = orderRepository.findByChannel(channel);
+        return ResponseEntity.ok(orders);
+    }
+
+    /**
+     * Get orders by channel and status
+     */
+    @GetMapping("/filter")
+    public ResponseEntity<List<FactOrder>> getOrdersByChannelAndStatus(
+            @RequestParam String channel,
+            @RequestParam String status) {
+        List<FactOrder> orders = orderRepository.findByChannelAndStatus(channel, status);
         return ResponseEntity.ok(orders);
     }
 

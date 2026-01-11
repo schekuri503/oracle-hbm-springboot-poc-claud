@@ -14,11 +14,10 @@ public class FactOrderLine implements Serializable {
     private Long orderLineId;
     private Long orderId;
     private Long productId;
-    private Integer quantity;
+    private Long supplierId;
+    private Integer qty;
     private BigDecimal unitPrice;
-    private BigDecimal lineTotal;
-    private BigDecimal discountPercent;
-    private Integer lineNumber;
+    private BigDecimal discountPct;
 
     // Association to order
     private FactOrder order;
@@ -29,11 +28,15 @@ public class FactOrderLine implements Serializable {
     public FactOrderLine() {
     }
 
-    public FactOrderLine(Long orderLineId, Long orderId, Long productId, Integer quantity) {
+    public FactOrderLine(Long orderLineId, Long orderId, Long productId, Long supplierId,
+                         Integer qty, BigDecimal unitPrice, BigDecimal discountPct) {
         this.orderLineId = orderLineId;
         this.orderId = orderId;
         this.productId = productId;
-        this.quantity = quantity;
+        this.supplierId = supplierId;
+        this.qty = qty;
+        this.unitPrice = unitPrice;
+        this.discountPct = discountPct;
     }
 
     // Getters and Setters
@@ -61,12 +64,20 @@ public class FactOrderLine implements Serializable {
         this.productId = productId;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public Long getSupplierId() {
+        return supplierId;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setSupplierId(Long supplierId) {
+        this.supplierId = supplierId;
+    }
+
+    public Integer getQty() {
+        return qty;
+    }
+
+    public void setQty(Integer qty) {
+        this.qty = qty;
     }
 
     public BigDecimal getUnitPrice() {
@@ -77,28 +88,12 @@ public class FactOrderLine implements Serializable {
         this.unitPrice = unitPrice;
     }
 
-    public BigDecimal getLineTotal() {
-        return lineTotal;
+    public BigDecimal getDiscountPct() {
+        return discountPct;
     }
 
-    public void setLineTotal(BigDecimal lineTotal) {
-        this.lineTotal = lineTotal;
-    }
-
-    public BigDecimal getDiscountPercent() {
-        return discountPercent;
-    }
-
-    public void setDiscountPercent(BigDecimal discountPercent) {
-        this.discountPercent = discountPercent;
-    }
-
-    public Integer getLineNumber() {
-        return lineNumber;
-    }
-
-    public void setLineNumber(Integer lineNumber) {
-        this.lineNumber = lineNumber;
+    public void setDiscountPct(BigDecimal discountPct) {
+        this.discountPct = discountPct;
     }
 
     public FactOrder getOrder() {
@@ -123,8 +118,10 @@ public class FactOrderLine implements Serializable {
                 "orderLineId=" + orderLineId +
                 ", orderId=" + orderId +
                 ", productId=" + productId +
-                ", quantity=" + quantity +
-                ", lineTotal=" + lineTotal +
+                ", supplierId=" + supplierId +
+                ", qty=" + qty +
+                ", unitPrice=" + unitPrice +
+                ", discountPct=" + discountPct +
                 '}';
     }
 }

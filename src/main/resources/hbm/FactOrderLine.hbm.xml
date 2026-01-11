@@ -14,11 +14,10 @@
 
         <property name="orderId" column="ORDER_ID" type="java.lang.Long" not-null="true" insert="false" update="false"/>
         <property name="productId" column="PRODUCT_ID" type="java.lang.Long" not-null="true" insert="false" update="false"/>
-        <property name="quantity" column="QUANTITY" type="java.lang.Integer" not-null="true"/>
+        <property name="supplierId" column="SUPPLIER_ID" type="java.lang.Long"/>
+        <property name="qty" column="QTY" type="java.lang.Integer" not-null="true"/>
         <property name="unitPrice" column="UNIT_PRICE" type="java.math.BigDecimal" precision="15" scale="2"/>
-        <property name="lineTotal" column="LINE_TOTAL" type="java.math.BigDecimal" precision="15" scale="2"/>
-        <property name="discountPercent" column="DISCOUNT_PERCENT" type="java.math.BigDecimal" precision="5" scale="2"/>
-        <property name="lineNumber" column="LINE_NUMBER" type="java.lang.Integer"/>
+        <property name="discountPct" column="DISCOUNT_PCT" type="java.math.BigDecimal" precision="5" scale="2"/>
 
         <!-- Many-to-One relationship to FactOrder -->
         <many-to-one name="order"

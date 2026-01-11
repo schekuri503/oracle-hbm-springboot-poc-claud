@@ -12,14 +12,10 @@
             </generator>
         </id>
 
-        <property name="productName" column="PRODUCT_NAME" type="java.lang.String" length="200" not-null="true"/>
-        <property name="productCode" column="PRODUCT_CODE" type="java.lang.String" length="50" not-null="true"/>
         <property name="category" column="CATEGORY" type="java.lang.String" length="100"/>
-        <property name="subCategory" column="SUB_CATEGORY" type="java.lang.String" length="100"/>
-        <property name="unitPrice" column="UNIT_PRICE" type="java.math.BigDecimal" precision="15" scale="2"/>
-        <property name="description" column="DESCRIPTION" type="java.lang.String" length="1000"/>
-        <property name="createdDate" column="CREATED_DATE" type="java.time.LocalDate"/>
-        <property name="activeFlag" column="ACTIVE_FLAG" type="java.lang.Boolean"/>
+        <property name="brand" column="BRAND" type="java.lang.String" length="100"/>
+        <property name="basePrice" column="BASE_PRICE" type="java.math.BigDecimal" precision="15" scale="2"/>
+        <property name="createdDt" column="CREATED_DT" type="java.time.LocalDate"/>
 
     </class>
 </hibernate-mapping>

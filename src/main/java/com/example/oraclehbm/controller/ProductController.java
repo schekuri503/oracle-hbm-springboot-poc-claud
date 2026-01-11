@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -49,16 +50,6 @@ public class ProductController {
     }
 
     /**
-     * Get product by product code
-     */
-    @GetMapping("/code/{productCode}")
-    public ResponseEntity<DimProduct> getProductByCode(@PathVariable String productCode) {
-        return productRepository.findByProductCode(productCode)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
-
-    /**
      * Get products by category
      */
     @GetMapping("/category/{category}")
@@ -68,11 +59,33 @@ public class ProductController {
     }
 
     /**
-     * Get active products
+     * Get products by brand
      */
-    @GetMapping("/active")
-    public ResponseEntity<List<DimProduct>> getActiveProducts() {
-        List<DimProduct> products = productRepository.findActiveProducts();
+    @GetMapping("/brand/{brand}")
+    public ResponseEntity<List<DimProduct>> getProductsByBrand(@PathVariable String brand) {
+        List<DimProduct> products = productRepository.findByBrand(brand);
+        return ResponseEntity.ok(products);
+    }
+
+    /**
+     * Get products by category and brand
+     */
+    @GetMapping("/filter")
+    public ResponseEntity<List<DimProduct>> getProductsByCategoryAndBrand(
+            @RequestParam String category,
+            @RequestParam String brand) {
+        List<DimProduct> products = productRepository.findByCategoryAndBrand(category, brand);
+        return ResponseEntity.ok(products);
+    }
+
+    /**
+     * Get products by price range
+     */
+    @GetMapping("/price-range")
+    public ResponseEntity<List<DimProduct>> getProductsByPriceRange(
+            @RequestParam BigDecimal minPrice,
+            @RequestParam BigDecimal maxPrice) {
+        List<DimProduct> products = productRepository.findByPriceRange(minPrice, maxPrice);
         return ResponseEntity.ok(products);
     }
 

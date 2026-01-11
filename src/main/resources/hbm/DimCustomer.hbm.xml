@@ -12,16 +12,9 @@
             </generator>
         </id>
 
-        <property name="customerName" column="CUSTOMER_NAME" type="java.lang.String" length="200" not-null="true"/>
-        <property name="email" column="EMAIL" type="java.lang.String" length="150"/>
-        <property name="phone" column="PHONE" type="java.lang.String" length="30"/>
-        <property name="address" column="ADDRESS" type="java.lang.String" length="500"/>
-        <property name="city" column="CITY" type="java.lang.String" length="100"/>
-        <property name="state" column="STATE" type="java.lang.String" length="100"/>
-        <property name="country" column="COUNTRY" type="java.lang.String" length="100"/>
-        <property name="postalCode" column="POSTAL_CODE" type="java.lang.String" length="20"/>
-        <property name="createdDate" column="CREATED_DATE" type="java.time.LocalDate"/>
-        <property name="activeFlag" column="ACTIVE_FLAG" type="java.lang.Boolean"/>
+        <property name="region" column="REGION" type="java.lang.String" length="100"/>
+        <property name="segment" column="SEGMENT" type="java.lang.String" length="100"/>
+        <property name="createdDt" column="CREATED_DT" type="java.time.LocalDate"/>
 
     </class>
 </hibernate-mapping>

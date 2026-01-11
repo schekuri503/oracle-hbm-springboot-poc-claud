@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -26,12 +25,12 @@ public class HibernateConfig {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource);
 
-        // Set mapping file locations
-        sessionFactory.setMappingLocations(
-                new ClassPathResource("hbm/DimCustomer.hbm.xml"),
-                new ClassPathResource("hbm/DimProduct.hbm.xml"),
-                new ClassPathResource("hbm/FactOrder.hbm.xml"),
-                new ClassPathResource("hbm/FactOrderLine.hbm.xml")
+        // Use mappingResources to register HBM files
+        sessionFactory.setMappingResources(
+                "hbm/DimCustomer.hbm.xml",
+                "hbm/DimProduct.hbm.xml",
+                "hbm/FactOrder.hbm.xml",
+                "hbm/FactOrderLine.hbm.xml"
         );
 
         sessionFactory.setHibernateProperties(hibernateProperties());

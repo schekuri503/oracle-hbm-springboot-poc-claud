@@ -13,15 +13,9 @@
         </id>
 
         <property name="customerId" column="CUSTOMER_ID" type="java.lang.Long" not-null="true" insert="false" update="false"/>
-        <property name="orderNumber" column="ORDER_NUMBER" type="java.lang.String" length="50" not-null="true"/>
-        <property name="orderDate" column="ORDER_DATE" type="java.time.LocalDate" not-null="true"/>
+        <property name="orderDt" column="ORDER_DT" type="java.time.LocalDate" not-null="true"/>
+        <property name="channel" column="CHANNEL" type="java.lang.String" length="50"/>
         <property name="status" column="STATUS" type="java.lang.String" length="30"/>
-        <property name="totalAmount" column="TOTAL_AMOUNT" type="java.math.BigDecimal" precision="15" scale="2"/>
-        <property name="taxAmount" column="TAX_AMOUNT" type="java.math.BigDecimal" precision="15" scale="2"/>
-        <property name="discountAmount" column="DISCOUNT_AMOUNT" type="java.math.BigDecimal" precision="15" scale="2"/>
-        <property name="shippingAddress" column="SHIPPING_ADDRESS" type="java.lang.String" length="500"/>
-        <property name="shippedDate" column="SHIPPED_DATE" type="java.time.LocalDate"/>
-        <property name="deliveredDate" column="DELIVERED_DATE" type="java.time.LocalDate"/>
 
         <!-- Many-to-One relationship to DimCustomer -->
         <many-to-one name="customer"

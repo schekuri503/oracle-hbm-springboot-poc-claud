@@ -1,0 +1,479 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+		"name": "Oracle HBM POC",
+		"description": "API collection for Oracle HBM Spring Boot POC - Hibernate XML Mapping with Oracle Autonomous DB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Get Top Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/customers?limit=10",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "customers"],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "Number of customers to return (default: 10)"
+								}
+							]
+						},
+						"description": "Get top N customers ordered by customer ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/customers/all",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "customers", "all"]
+						},
+						"description": "Get all customers"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/customers/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "customers", "1"]
+						},
+						"description": "Get a customer by their ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Active Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/customers/active",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "customers", "active"]
+						},
+						"description": "Get all active customers"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customers by City",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/customers/city/New York",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "customers", "city", "New York"]
+						},
+						"description": "Get customers by city name"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/customers/count",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "customers", "count"]
+						},
+						"description": "Get total count of customers"
+					},
+					"response": []
+				}
+			],
+			"description": "Customer dimension table endpoints"
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Get Top Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/products?limit=10",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "products"],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "Number of products to return (default: 10)"
+								}
+							]
+						},
+						"description": "Get top N products ordered by product ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/products/all",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "products", "all"]
+						},
+						"description": "Get all products"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/products/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "products", "1"]
+						},
+						"description": "Get a product by its ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product by Code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/products/code/ELEC-LP15",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "products", "code", "ELEC-LP15"]
+						},
+						"description": "Get a product by its product code"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products by Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/products/category/Electronics",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "products", "category", "Electronics"]
+						},
+						"description": "Get products by category"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Active Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/products/active",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "products", "active"]
+						},
+						"description": "Get all active products"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/products/count",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "products", "count"]
+						},
+						"description": "Get total count of products"
+					},
+					"response": []
+				}
+			],
+			"description": "Product dimension table endpoints"
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Get Top Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/orders?limit=10",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "orders"],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "Number of orders to return (default: 10)"
+								}
+							]
+						},
+						"description": "Get top N orders ordered by order ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/orders/all",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "orders", "all"]
+						},
+						"description": "Get all orders"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/orders/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "orders", "1"]
+						},
+						"description": "Get an order by its ID (includes customer details)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order by Order Number",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/orders/number/ORD-2023-001",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "orders", "number", "ORD-2023-001"]
+						},
+						"description": "Get an order by its order number"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Orders by Customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/orders/customer/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "orders", "customer", "1"]
+						},
+						"description": "Get all orders for a specific customer"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Orders by Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/orders/status/DELIVERED",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "orders", "status", "DELIVERED"]
+						},
+						"description": "Get orders by status (PENDING, PROCESSING, SHIPPED, DELIVERED)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Orders by Date Range",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/orders/date-range?startDate=2023-06-01&endDate=2023-07-31",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "orders", "date-range"],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2023-06-01",
+									"description": "Start date (ISO format: YYYY-MM-DD)"
+								},
+								{
+									"key": "endDate",
+									"value": "2023-07-31",
+									"description": "End date (ISO format: YYYY-MM-DD)"
+								}
+							]
+						},
+						"description": "Get orders within a date range"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/orders/count",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "orders", "count"]
+						},
+						"description": "Get total count of orders"
+					},
+					"response": []
+				}
+			],
+			"description": "Order fact table endpoints"
+		},
+		{
+			"name": "Order Lines",
+			"item": [
+				{
+					"name": "Get Top Order Lines",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/order-lines?limit=10",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "order-lines"],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "Number of order lines to return (default: 10)"
+								}
+							]
+						},
+						"description": "Get top N order lines ordered by order line ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Order Lines",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/order-lines/all",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "order-lines", "all"]
+						},
+						"description": "Get all order lines"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order Line by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/order-lines/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "order-lines", "1"]
+						},
+						"description": "Get an order line by its ID (includes order and product details)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order Lines by Order ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/order-lines/order/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "order-lines", "order", "1"]
+						},
+						"description": "Get all order lines for a specific order"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order Lines by Product ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/order-lines/product/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "order-lines", "product", "1"]
+						},
+						"description": "Get all order lines containing a specific product"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order Line Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/order-lines/count",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "order-lines", "count"]
+						},
+						"description": "Get total count of order lines"
+					},
+					"response": []
+				}
+			],
+			"description": "Order line fact table endpoints"
+		},
+		{
+			"name": "Health Check",
+			"item": [
+				{
+					"name": "H2 Console Access",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/h2-console",
+							"host": ["{{baseUrl}}"],
+							"path": ["h2-console"]
+						},
+						"description": "Access H2 database console (only available with H2 profile)"
+					},
+					"response": []
+				}
+			],
+			"description": "Health and utility endpoints"
+		}
+	]
+}

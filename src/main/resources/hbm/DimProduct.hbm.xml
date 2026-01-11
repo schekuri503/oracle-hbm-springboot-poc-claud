@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.example.oraclehbm.model.DimProduct" table="DIM_PRODUCT">
+
+        <id name="productId" column="PRODUCT_ID" type="java.lang.Long">
+            <generator class="native">
+                <param name="sequence_name">DIM_PRODUCT_SEQ</param>
+            </generator>
+        </id>
+
+        <property name="productName" column="PRODUCT_NAME" type="java.lang.String" length="200" not-null="true"/>
+        <property name="productCode" column="PRODUCT_CODE" type="java.lang.String" length="50" not-null="true"/>
+        <property name="category" column="CATEGORY" type="java.lang.String" length="100"/>
+        <property name="subCategory" column="SUB_CATEGORY" type="java.lang.String" length="100"/>
+        <property name="unitPrice" column="UNIT_PRICE" type="java.math.BigDecimal" precision="15" scale="2"/>
+        <property name="description" column="DESCRIPTION" type="java.lang.String" length="1000"/>
+        <property name="createdDate" column="CREATED_DATE" type="java.time.LocalDate"/>
+        <property name="activeFlag" column="ACTIVE_FLAG" type="java.lang.Boolean"/>
+
+    </class>
+</hibernate-mapping>

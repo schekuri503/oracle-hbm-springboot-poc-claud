@@ -1,0 +1,56 @@
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# IDE
+.idea/
+*.iml
+*.iws
+.project
+.classpath
+.settings/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Build
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Wallet files (sensitive - never commit)
+wallet/
+*.sso
+*.p12
+*.jks
+tnsnames.ora
+sqlnet.ora
+cwallet.sso
+ewallet.p12
+keystore.jks
+truststore.jks
+
+# Environment files
+.env
+.env.local
+*.env
+
+# H2 Database files
+*.db
+*.trace.db
+*.lock.db

@@ -34,7 +34,8 @@ logs/
 Thumbs.db
 
 # Wallet files (sensitive - never commit)
-wallet/
+wallet/*
+!wallet/README.md
 *.sso
 *.p12
 *.jks

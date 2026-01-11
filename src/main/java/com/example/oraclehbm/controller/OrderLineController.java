@@ -20,11 +20,11 @@ public class OrderLineController {
     }
 
     /**
-     * Get top N order lines (default 10)
+     * Get top N order lines (default 50)
      */
     @GetMapping
     public ResponseEntity<List<FactOrderLine>> getTopOrderLines(
-            @RequestParam(defaultValue = "10") int limit) {
+            @RequestParam(defaultValue = "50") int limit) {
         List<FactOrderLine> orderLines = orderLineRepository.findTop(limit);
         return ResponseEntity.ok(orderLines);
     }
@@ -54,6 +54,17 @@ public class OrderLineController {
     @GetMapping("/order/{orderId}")
     public ResponseEntity<List<FactOrderLine>> getOrderLinesByOrderId(@PathVariable Long orderId) {
         List<FactOrderLine> orderLines = orderLineRepository.findByOrderId(orderId);
+        return ResponseEntity.ok(orderLines);
+    }
+
+    /**
+     * Get order lines by order ID with limit (default 200)
+     */
+    @GetMapping("/by-order/{orderId}")
+    public ResponseEntity<List<FactOrderLine>> getOrderLinesByOrderIdWithLimit(
+            @PathVariable Long orderId,
+            @RequestParam(defaultValue = "200") int limit) {
+        List<FactOrderLine> orderLines = orderLineRepository.findByOrderIdWithLimit(orderId, limit);
         return ResponseEntity.ok(orderLines);
     }
 

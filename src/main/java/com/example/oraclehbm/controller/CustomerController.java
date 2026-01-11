@@ -49,20 +49,31 @@ public class CustomerController {
     }
 
     /**
-     * Get active customers
+     * Get customers by region
      */
-    @GetMapping("/active")
-    public ResponseEntity<List<DimCustomer>> getActiveCustomers() {
-        List<DimCustomer> customers = customerRepository.findActiveCustomers();
+    @GetMapping("/region/{region}")
+    public ResponseEntity<List<DimCustomer>> getCustomersByRegion(@PathVariable String region) {
+        List<DimCustomer> customers = customerRepository.findByRegion(region);
         return ResponseEntity.ok(customers);
     }
 
     /**
-     * Get customers by city
+     * Get customers by segment
      */
-    @GetMapping("/city/{city}")
-    public ResponseEntity<List<DimCustomer>> getCustomersByCity(@PathVariable String city) {
-        List<DimCustomer> customers = customerRepository.findByCity(city);
+    @GetMapping("/segment/{segment}")
+    public ResponseEntity<List<DimCustomer>> getCustomersBySegment(@PathVariable String segment) {
+        List<DimCustomer> customers = customerRepository.findBySegment(segment);
+        return ResponseEntity.ok(customers);
+    }
+
+    /**
+     * Get customers by region and segment
+     */
+    @GetMapping("/filter")
+    public ResponseEntity<List<DimCustomer>> getCustomersByRegionAndSegment(
+            @RequestParam String region,
+            @RequestParam String segment) {
+        List<DimCustomer> customers = customerRepository.findByRegionAndSegment(region, segment);
         return ResponseEntity.ok(customers);
     }
 

@@ -46,7 +46,7 @@ public class OrderLineRepository {
 
     public List<FactOrderLine> findByOrderId(Long orderId) {
         Query<FactOrderLine> query = getCurrentSession()
-                .createQuery("FROM FactOrderLine WHERE order.orderId = :orderId ORDER BY lineNumber", FactOrderLine.class);
+                .createQuery("FROM FactOrderLine WHERE order.orderId = :orderId ORDER BY orderLineId", FactOrderLine.class);
         query.setParameter("orderId", orderId);
         return query.getResultList();
     }
@@ -63,6 +63,13 @@ public class OrderLineRepository {
         Query<FactOrderLine> query = getCurrentSession()
                 .createQuery("FROM FactOrderLine WHERE product.productId = :productId ORDER BY orderLineId", FactOrderLine.class);
         query.setParameter("productId", productId);
+        return query.getResultList();
+    }
+
+    public List<FactOrderLine> findBySupplierId(Long supplierId) {
+        Query<FactOrderLine> query = getCurrentSession()
+                .createQuery("FROM FactOrderLine WHERE supplierId = :supplierId ORDER BY orderLineId", FactOrderLine.class);
+        query.setParameter("supplierId", supplierId);
         return query.getResultList();
     }
 

@@ -13,22 +13,20 @@ public class DimProduct implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long productId;
-    private String productName;
-    private String productCode;
     private String category;
-    private String subCategory;
-    private BigDecimal unitPrice;
-    private String description;
-    private LocalDate createdDate;
-    private Boolean activeFlag;
+    private String brand;
+    private BigDecimal basePrice;
+    private LocalDate createdDt;
 
     public DimProduct() {
     }
 
-    public DimProduct(Long productId, String productName, String productCode) {
+    public DimProduct(Long productId, String category, String brand, BigDecimal basePrice, LocalDate createdDt) {
         this.productId = productId;
-        this.productName = productName;
-        this.productCode = productCode;
+        this.category = category;
+        this.brand = brand;
+        this.basePrice = basePrice;
+        this.createdDt = createdDt;
     }
 
     // Getters and Setters
@@ -40,22 +38,6 @@ public class DimProduct implements Serializable {
         this.productId = productId;
     }
 
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public String getProductCode() {
-        return productCode;
-    }
-
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
-    }
-
     public String getCategory() {
         return category;
     }
@@ -64,54 +46,38 @@ public class DimProduct implements Serializable {
         this.category = category;
     }
 
-    public String getSubCategory() {
-        return subCategory;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setSubCategory(String subCategory) {
-        this.subCategory = subCategory;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
-    public BigDecimal getUnitPrice() {
-        return unitPrice;
+    public BigDecimal getBasePrice() {
+        return basePrice;
     }
 
-    public void setUnitPrice(BigDecimal unitPrice) {
-        this.unitPrice = unitPrice;
+    public void setBasePrice(BigDecimal basePrice) {
+        this.basePrice = basePrice;
     }
 
-    public String getDescription() {
-        return description;
+    public LocalDate getCreatedDt() {
+        return createdDt;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public LocalDate getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public Boolean getActiveFlag() {
-        return activeFlag;
-    }
-
-    public void setActiveFlag(Boolean activeFlag) {
-        this.activeFlag = activeFlag;
+    public void setCreatedDt(LocalDate createdDt) {
+        this.createdDt = createdDt;
     }
 
     @Override
     public String toString() {
         return "DimProduct{" +
                 "productId=" + productId +
-                ", productName='" + productName + '\'' +
-                ", productCode='" + productCode + '\'' +
                 ", category='" + category + '\'' +
-                ", unitPrice=" + unitPrice +
+                ", brand='" + brand + '\'' +
+                ", basePrice=" + basePrice +
+                ", createdDt=" + createdDt +
                 '}';
     }
 }

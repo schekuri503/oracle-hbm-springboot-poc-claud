@@ -1,7 +1,6 @@
 package com.example.oraclehbm.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,17 +15,11 @@ public class FactOrder implements Serializable {
 
     private Long orderId;
     private Long customerId;
-    private String orderNumber;
-    private LocalDate orderDate;
+    private LocalDate orderDt;
+    private String channel;
     private String status;
-    private BigDecimal totalAmount;
-    private BigDecimal taxAmount;
-    private BigDecimal discountAmount;
-    private String shippingAddress;
-    private LocalDate shippedDate;
-    private LocalDate deliveredDate;
 
-    // Association to customer (optional, for eager/lazy loading)
+    // Association to customer (for eager/lazy loading)
     private DimCustomer customer;
 
     // Association to order lines
@@ -35,10 +28,12 @@ public class FactOrder implements Serializable {
     public FactOrder() {
     }
 
-    public FactOrder(Long orderId, String orderNumber, LocalDate orderDate) {
+    public FactOrder(Long orderId, Long customerId, LocalDate orderDt, String channel, String status) {
         this.orderId = orderId;
-        this.orderNumber = orderNumber;
-        this.orderDate = orderDate;
+        this.customerId = customerId;
+        this.orderDt = orderDt;
+        this.channel = channel;
+        this.status = status;
     }
 
     // Getters and Setters
@@ -58,20 +53,20 @@ public class FactOrder implements Serializable {
         this.customerId = customerId;
     }
 
-    public String getOrderNumber() {
-        return orderNumber;
+    public LocalDate getOrderDt() {
+        return orderDt;
     }
 
-    public void setOrderNumber(String orderNumber) {
-        this.orderNumber = orderNumber;
+    public void setOrderDt(LocalDate orderDt) {
+        this.orderDt = orderDt;
     }
 
-    public LocalDate getOrderDate() {
-        return orderDate;
+    public String getChannel() {
+        return channel;
     }
 
-    public void setOrderDate(LocalDate orderDate) {
-        this.orderDate = orderDate;
+    public void setChannel(String channel) {
+        this.channel = channel;
     }
 
     public String getStatus() {
@@ -80,54 +75,6 @@ public class FactOrder implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public BigDecimal getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(BigDecimal totalAmount) {
-        this.totalAmount = totalAmount;
-    }
-
-    public BigDecimal getTaxAmount() {
-        return taxAmount;
-    }
-
-    public void setTaxAmount(BigDecimal taxAmount) {
-        this.taxAmount = taxAmount;
-    }
-
-    public BigDecimal getDiscountAmount() {
-        return discountAmount;
-    }
-
-    public void setDiscountAmount(BigDecimal discountAmount) {
-        this.discountAmount = discountAmount;
-    }
-
-    public String getShippingAddress() {
-        return shippingAddress;
-    }
-
-    public void setShippingAddress(String shippingAddress) {
-        this.shippingAddress = shippingAddress;
-    }
-
-    public LocalDate getShippedDate() {
-        return shippedDate;
-    }
-
-    public void setShippedDate(LocalDate shippedDate) {
-        this.shippedDate = shippedDate;
-    }
-
-    public LocalDate getDeliveredDate() {
-        return deliveredDate;
-    }
-
-    public void setDeliveredDate(LocalDate deliveredDate) {
-        this.deliveredDate = deliveredDate;
     }
 
     public DimCustomer getCustomer() {
@@ -150,10 +97,10 @@ public class FactOrder implements Serializable {
     public String toString() {
         return "FactOrder{" +
                 "orderId=" + orderId +
-                ", orderNumber='" + orderNumber + '\'' +
-                ", orderDate=" + orderDate +
+                ", customerId=" + customerId +
+                ", orderDt=" + orderDt +
+                ", channel='" + channel + '\'' +
                 ", status='" + status + '\'' +
-                ", totalAmount=" + totalAmount +
                 '}';
     }
 }

@@ -44,16 +44,25 @@ public class CustomerRepository {
         return query.getResultList();
     }
 
-    public List<DimCustomer> findActiveCustomers() {
+    public List<DimCustomer> findByRegion(String region) {
         Query<DimCustomer> query = getCurrentSession()
-                .createQuery("FROM DimCustomer WHERE activeFlag = true ORDER BY customerName", DimCustomer.class);
+                .createQuery("FROM DimCustomer WHERE region = :region ORDER BY customerId", DimCustomer.class);
+        query.setParameter("region", region);
         return query.getResultList();
     }
 
-    public List<DimCustomer> findByCity(String city) {
+    public List<DimCustomer> findBySegment(String segment) {
         Query<DimCustomer> query = getCurrentSession()
-                .createQuery("FROM DimCustomer WHERE city = :city ORDER BY customerName", DimCustomer.class);
-        query.setParameter("city", city);
+                .createQuery("FROM DimCustomer WHERE segment = :segment ORDER BY customerId", DimCustomer.class);
+        query.setParameter("segment", segment);
+        return query.getResultList();
+    }
+
+    public List<DimCustomer> findByRegionAndSegment(String region, String segment) {
+        Query<DimCustomer> query = getCurrentSession()
+                .createQuery("FROM DimCustomer WHERE region = :region AND segment = :segment ORDER BY customerId", DimCustomer.class);
+        query.setParameter("region", region);
+        query.setParameter("segment", segment);
         return query.getResultList();
     }
 

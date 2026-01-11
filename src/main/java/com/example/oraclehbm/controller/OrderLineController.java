@@ -78,6 +78,15 @@ public class OrderLineController {
     }
 
     /**
+     * Get order lines by supplier ID
+     */
+    @GetMapping("/supplier/{supplierId}")
+    public ResponseEntity<List<FactOrderLine>> getOrderLinesBySupplierId(@PathVariable Long supplierId) {
+        List<FactOrderLine> orderLines = orderLineRepository.findBySupplierId(supplierId);
+        return ResponseEntity.ok(orderLines);
+    }
+
+    /**
      * Get order line count
      */
     @GetMapping("/count")
